@@ -15,7 +15,7 @@ function twoSum(arr, target) {
     for (let j = i + 1; j < arr.length; j++) {
       // Recorremos nuevamente el array pero empezando de la posicion "i" + 1
       if (arr[i] + arr[j] == target) {
-        // Comprobamos si la suma de ambos valores obtenidos previamente, es igual al "target", que estamos buscando
+        // Comprobamos si la suma de ambos valores obtenidos previamente es igual al "target" que estamos buscando
         // Si el condicional es true, retoramos ambas posiciones guardadas previamente
         // Si el condicional es false, el loop continua hasta encontrar los valores que estamos buscando
         // Si no conseguimos los valores que estamos buscando, devolvemos "undefined"
@@ -54,20 +54,27 @@ class Node {
 }
 
 function twoSumLL(list, target) {
-  let currentNodeI = list.head;
-  let currentNodeJ;
+  let currentNodeI = list.head; // Creamos una variable que obtenga el valor del primer nodo
+  let currentNodeJ; // Inicializamos la variable que obtendra el valor del nodo a sumar
 
   for (let i = 0; i < list.length; i++) {
+    // Recorremos la LinkedList
     currentNodeJ = currentNodeI.next;
+    // Declaramos la variable inicializada anteriormente, obteniendo el valor del nodo siguiente
     for (let j = i + 1; j < list.length; j++) {
+      // Recorremos la LinkedList nuevamente, utilizando ambos nodos conseguidos previamente
       if (currentNodeI.value + currentNodeJ.value == target) {
+        // Comprobamos si la suma de los valores de los nodos obtenidos previamente es igual al "target" que estamos buscando
         return [currentNodeI, currentNodeJ];
+        // Si el condicional es true, retoramos ambos nodos guardados previamente
       } else {
         currentNodeJ = currentNodeJ.next;
+        // Si el condicional es false, el loop continua e igualamos el nodo obtenido previamente a su siguiente nodo
       }
     }
-    currentNodeI = currentNodeI.next;
+    currentNodeI = currentNodeI.next; // Igualamos el nodo obtenido previamente a su siguiente nodo
   }
+  // Si no conseguimos los valores que estamos buscando, devolvemos "undefined"
 }
 
 const list = new LinkedList(11);
