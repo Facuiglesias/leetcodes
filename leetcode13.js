@@ -12,7 +12,7 @@
 // Given a roman numeral, convert it to an integer.
 
 // TIME COMPLEXITY: O(n)
-// SPACE COMPLEXITY: O(n)
+// SPACE COMPLEXITY: O(1)
 
 function romanToInt(s) {
   const value = {
