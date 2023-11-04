@@ -2,16 +2,92 @@
 // You may assume that each input would have exactly one solution, and you may not use the same element twice.
 // You can return the answer in any order.
 
-const nums = [2, 7, 11, 15];
+//Estructura de datos: ARRAY
 
-var twoSum = function (arr, target) {
+//TIME COMPLEXITY: O(n2) ["For anidados"]
+//SPACE COMPLEXITY: O(n) [Valor de entrada = [arr]]
+
+const nums = [2, 7, 11, 15]; //O(1)
+
+function twoSum(arr, target) {
   for (let i = 0; i < arr.length; i++) {
+    // Recorremos el array para obtener el primer valor
     for (let j = i + 1; j < arr.length; j++) {
+      // Recorremos nuevamente el array pero empezando de la posicion "i" + 1
       if (arr[i] + arr[j] == target) {
+        // Comprobamos si la suma de ambos valores obtenidos previamente, es igual al "target", que estamos buscando
+        // Si el condicional es true, retoramos ambas posiciones guardadas previamente
+        // Si el condicional es false, el loop continua hasta encontrar los valores que estamos buscando
+        // Si no conseguimos los valores que estamos buscando, devolvemos "undefined"
         return [i, j];
       }
     }
   }
-};
+}
 
-console.log(twoSum(nums, 9));
+// console.log(twoSum(nums, 9));
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Estructura de datos: LINKED LIST
+
+class LinkedList {
+  constructor(value) {
+    this.head = { value: value, next: null };
+    this.tail = this.head;
+    this.length = 1;
+  }
+  append(value) {
+    const newNode = new Node(value);
+
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+  }
+}
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+function twoSumLL(list, target) {
+  let currentNodeI = list.head;
+  let currentNodeJ = currentNodeI.next;
+
+  for (let i = 0; i < list.length; i++) {
+    for (let j = i + 1; j < list.length; j++) {
+      if (currentNodeI.next == null) {
+        return undefined;
+      }
+      if (currentNodeI.value + currentNodeJ.value == target) {
+        return [currentNodeI, currentNodeJ];
+      } else {
+        currentNodeJ = currentNodeJ.next;
+      }
+      currentNodeJ = currentNodeI.next;
+    }
+    currentNodeI = currentNodeI.next;
+  }
+
+  // while (result != target) {
+  //   if (currentNode.next == null) {
+  //     return undefined;
+  //   }
+  //   result = currentNode.value + currentNode.next.value;
+  //   if (result == target) {
+  //     return [currentNode, currentNode.next];
+  //   } else {
+  //     currentNode = currentNode.next;
+  //   }
+  // }
+}
+
+const list = new LinkedList(11);
+list.append(2);
+list.append(15);
+list.append(7);
+
+console.log(twoSumLL(list, 9));

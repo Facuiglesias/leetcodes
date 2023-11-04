@@ -1,5 +1,9 @@
 // Given an integer x, return true if x is a palindrome, and false otherwise.
 
+// TIME COMPLEXITY:
+// SPACE COMPLEXITY:
+//AUXILIAR COMPLEXITY:
+
 function isPalindrome(x) {
   const xStringify = x.toString();
   const xArray = xStringify.split("");
