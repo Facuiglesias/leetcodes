@@ -55,34 +55,19 @@ class Node {
 
 function twoSumLL(list, target) {
   let currentNodeI = list.head;
-  let currentNodeJ = currentNodeI.next;
+  let currentNodeJ;
 
   for (let i = 0; i < list.length; i++) {
+    currentNodeJ = currentNodeI.next;
     for (let j = i + 1; j < list.length; j++) {
-      if (currentNodeI.next == null) {
-        return undefined;
-      }
       if (currentNodeI.value + currentNodeJ.value == target) {
         return [currentNodeI, currentNodeJ];
       } else {
         currentNodeJ = currentNodeJ.next;
       }
-      currentNodeJ = currentNodeI.next;
     }
     currentNodeI = currentNodeI.next;
   }
-
-  // while (result != target) {
-  //   if (currentNode.next == null) {
-  //     return undefined;
-  //   }
-  //   result = currentNode.value + currentNode.next.value;
-  //   if (result == target) {
-  //     return [currentNode, currentNode.next];
-  //   } else {
-  //     currentNode = currentNode.next;
-  //   }
-  // }
 }
 
 const list = new LinkedList(11);
@@ -90,4 +75,4 @@ list.append(2);
 list.append(15);
 list.append(7);
 
-console.log(twoSumLL(list, 9));
+console.log(twoSumLL(list, 13));
